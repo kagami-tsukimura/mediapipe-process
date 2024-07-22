@@ -35,7 +35,7 @@ axes = (60, 50)
 angle = 0
 ellipse_color = (255, 0, 0)
 box = (ellipse_center, axes, angle)
-ellipse_thickness = 3
+ellipse_thickness = -1
 cv2.ellipse(img, box, ellipse_color, ellipse_thickness, line_type)
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

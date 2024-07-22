@@ -1,7 +1,17 @@
 import cv2
 
 img = cv2.imread("./images/icon.png")
-cv2.circle(img, (100, 100), 10, (0, 0, 255), -1)
+
+st_point = (80, 100)
+end_point = (150, 30)
+color = (0, 0, 255)
+thickness = 2
+line_type = cv2.LINE_8
+shift = 0
+
+cv2.line(img, st_point, end_point, color, thickness, line_type, shift)
+cv2.rectangle(img, st_point, end_point, color, thickness, line_type, shift)
+cv2.circle(img, (80, 100), 10, (0, 0, 255), 2)
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)

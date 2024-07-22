@@ -3,7 +3,8 @@ import cv2
 img = cv2.imread("./images/icon.png")
 w, h, c = img.shape
 print(f"width: {w}, height: {h}, channels: {c}")
-print(img[0, 10])
+print(img[100, 100])
+cv2.circle(img, (100, 100), 10, (0, 0, 255), -1)
 cv2.putText(
     img,
     "Penguin",

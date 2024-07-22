@@ -3,8 +3,9 @@ import cv2
 img = cv2.imread("./images/icon.png")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-imgs = (img, img_gray, img_hsv)
+imgs = {"img": img, "img_gray": img_gray, "img_hsv": img_hsv, "img_rgb": img_rgb}
 
 w, h, c = img.shape
 print(f"width: {w}, height: {h}, channels: {c}")
@@ -20,10 +21,9 @@ cv2.putText(
     2,
 )
 
-for img in imgs:
+for name, img in imgs.items():
     cv2.imshow("", img)
 
     cv2.waitKey()
     cv2.destroyAllWindows()
-
-cv2.imwrite("./images/output_penguin.png", img)
+    cv2.imwrite(f"./images/output_{name}.png", img)

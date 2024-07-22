@@ -2,8 +2,9 @@ import cv2
 
 img = cv2.imread("./images/icon.png")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-imgs = (img, img_gray)
+imgs = (img, img_gray, img_hsv)
 
 w, h, c = img.shape
 print(f"width: {w}, height: {h}, channels: {c}")

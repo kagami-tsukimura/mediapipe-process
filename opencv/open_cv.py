@@ -9,20 +9,34 @@ thickness = 2
 line_type = cv2.LINE_8
 shift = 0
 
+# 描画
+# 線
 cv2.line(img, st_point, end_point, color, thickness, line_type, shift)
+
+# 正方形
 cv2.rectangle(img, st_point, end_point, color, thickness, line_type, shift)
 
+# 矢印
 arrow_end_point = (30, 150)
 tipLength = 0.1
 cv2.arrowedLine(
     img, st_point, arrow_end_point, color, thickness, line_type, shift, tipLength
 )
 
+# 円
 center = (80, 100)
 radius = 10
 circle_color = (255, 255, 0)
-
 cv2.circle(img, center, radius, circle_color, thickness, line_type, shift)
+
+# 楕円
+ellipse_center = (300, 220)
+axes = (60, 50)
+angle = 0
+ellipse_color = (255, 0, 0)
+box = (ellipse_center, axes, angle)
+ellipse_thickness = 3
+cv2.ellipse(img, box, ellipse_color, ellipse_thickness, line_type)
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)

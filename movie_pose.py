@@ -31,7 +31,7 @@ video_path = "../../Downloads/test.mp4"  # ここに動画ファイルのパス�
 cap = cv2.VideoCapture(video_path)
 
 # YOLOv8モデルの読み込み
-model = YOLO("yolov8s.pt")
+model = YOLO("./weights/yolov8s.pt")
 
 # FPS計測用
 prev_frame_time = time.time()

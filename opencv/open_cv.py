@@ -20,10 +20,11 @@ for name, img in imgs.items():
         img,
         name,
         (w // 3 * 1, h // 7 * 6),
-        cv2.FONT_HERSHEY_DUPLEX,
+        cv2.FONT_HERSHEY_SIMPLEX,
         1,
         (255, 0, 0),
         2,
+        cv2.LINE_AA,
     )
     cv2.imshow("", img)
 

@@ -1,6 +1,10 @@
 import cv2
 
 img = cv2.imread("./images/icon.png")
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+imgs = (img, img_gray)
+
 w, h, c = img.shape
 print(f"width: {w}, height: {h}, channels: {c}")
 print(img[100, 100])
@@ -14,9 +18,11 @@ cv2.putText(
     (255, 0, 0),
     2,
 )
-cv2.imshow("", img)
 
-cv2.waitKey()
-cv2.destroyAllWindows()
+for img in imgs:
+    cv2.imshow("", img)
+
+    cv2.waitKey()
+    cv2.destroyAllWindows()
 
 cv2.imwrite("./images/output_penguin.png", img)

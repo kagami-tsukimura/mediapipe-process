@@ -11,6 +11,11 @@ shift = 0
 
 cv2.line(img, st_point, end_point, color, thickness, line_type, shift)
 cv2.rectangle(img, st_point, end_point, color, thickness, line_type, shift)
+
+arrow_end_point = (30, 150)
+tipLength = 0.1
+cv2.arrowedLine(img, st_point, arrow_end_point, color, thickness, line_type, shift)
+
 cv2.circle(img, (80, 100), 10, (0, 0, 255), 2)
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

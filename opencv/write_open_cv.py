@@ -44,7 +44,7 @@ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-imgs = {"img": img, "img_gray": img_gray, "img_hsv": img_hsv, "img_rgb": img_rgb}
+imgs = {"origin": img, "img_gray": img_gray, "img_hsv": img_hsv, "img_rgb": img_rgb}
 
 # 生の画像データ取得
 w, h, c = img.shape

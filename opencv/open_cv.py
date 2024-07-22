@@ -1,7 +1,8 @@
 import cv2
 
 image = cv2.imread("./images/icon.png")
-w, h, _ = image.shape
+w, h, c = image.shape
+print(f"width: {w}, height: {h}, channels: {c}")
 cv2.putText(
     image,
     "Penguin",

@@ -18,7 +18,11 @@ cv2.arrowedLine(
     img, st_point, arrow_end_point, color, thickness, line_type, shift, tipLength
 )
 
-cv2.circle(img, (80, 100), 10, (0, 0, 255), 2)
+center = (80, 100)
+radius = 10
+circle_color = (255, 255, 0)
+
+cv2.circle(img, center, radius, circle_color, thickness, line_type, shift)
 
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)

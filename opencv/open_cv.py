@@ -18,3 +18,5 @@ cv2.imshow("", img)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
+
+cv2.imwrite("./images/output_penguin.png", img)

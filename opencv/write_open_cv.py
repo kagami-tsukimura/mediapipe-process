@@ -1,3 +1,5 @@
+import os
+
 import cv2
 
 img = cv2.imread("./images/icon.png")
@@ -50,6 +52,9 @@ print(f"width: {w}, height: {h}, channels: {c}")
 print(img[100, 100])
 
 
+output_dir = "./images/outputs"
+os.makedirs(output_dir, exist_ok=True)
+
 for name, img in imgs.items():
     cv2.putText(
         img,
@@ -65,4 +70,4 @@ for name, img in imgs.items():
 
     cv2.waitKey()
     cv2.destroyAllWindows()
-    cv2.imwrite(f"./images/output_{name}.png", img)
+    cv2.imwrite(f"{output_dir}/output_{name}.png", img)

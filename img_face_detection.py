@@ -24,7 +24,7 @@ pose = mp_pose.Pose(
 )
 
 # 動画ファイルのパスを指定
-video_path = "your_video_file.mp4"  # ここに動画ファイルのパスを指定
+video_path = "../../Downloads/test.mp4"  # ここに動画ファイルのパスを指定
 cap = cv2.VideoCapture(video_path)
 
 while cap.isOpened():

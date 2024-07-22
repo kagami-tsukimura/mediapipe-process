@@ -1,4 +1,6 @@
+import os
 import time
+from datetime import datetime
 
 import cv2
 import torch
@@ -27,8 +29,25 @@ pose = mp_pose.Pose(
 )
 
 # 動画ファイルのパスを指定
-video_path = "../../Downloads/test.mp4"  # ここに動画ファイルのパスを指定
+video_path = (
+    "../../Videos/mediapipe_mp4/mediapipe_small.mp4"  # ここに動画ファイルのパスを指定
+)
 cap = cv2.VideoCapture(video_path)
+
+now = datetime.now().strftime("%Y%m%d_%Hh%Mm%Ss")
+output_dir = "./outputs"
+# 出力先がなければ作成
+os.makedirs(output_dir, exist_ok=True)
+
+output_file_path = f"{output_dir}/{now}.mp4"
+
+CLIP_FPS = cap.get(cv2.CAP_PROP_FPS)
+H = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+W = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+
+codec = cv2.VideoWriter_fourcc("m", "p", "4", "v")
+video = cv2.VideoWriter(output_file_path, codec, CLIP_FPS, (W, H))
+
 
 # YOLOv8モデルの読み込み
 model = YOLO("./weights/yolov8s.pt")
@@ -109,9 +128,11 @@ while cap.isOpened():
 
     # 結果を表示
     cv2.imshow("MediaPipe Pose", image_bgr)
+    video.write(image_bgr)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
 
 cap.release()
+video.release()
 cv2.destroyAllWindows()

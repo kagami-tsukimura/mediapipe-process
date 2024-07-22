@@ -2,6 +2,7 @@ import cv2
 
 img = cv2.imread("./images/icon.png")
 cv2.circle(img, (100, 100), 10, (0, 0, 255), -1)
+
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

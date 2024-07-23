@@ -8,6 +8,7 @@ if not cap.isOpened():
 
 while True:
     ret, frame = cap.read()
+    # 画像読み込み失敗時
     if not ret:
         break
 

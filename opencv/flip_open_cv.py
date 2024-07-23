@@ -9,11 +9,21 @@ counter_img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
 # 180度回転
 reverse_img = cv2.rotate(img, cv2.ROTATE_180)
 
+# 任意回転
+height, width, _ = img.shape
+center = (int(width / 2), int(height / 2))
+angle = 45
+scale = 1
+# 回転 & Affine変換
+trans = cv2.getRotationMatrix2D(center, angle, scale)
+free_img = cv2.warpAffine(img, trans, (width, height))
+
 imgs = {
     "origin": img,
     "clock": clock_img,
     "counter": counter_img,
     "reverse": reverse_img,
+    "free": free_img,
 }
 
 for name, image in imgs.items():

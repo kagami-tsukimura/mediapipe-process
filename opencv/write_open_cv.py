@@ -44,7 +44,7 @@ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-imgs = {"origin": img, "img_gray": img_gray, "img_hsv": img_hsv, "img_rgb": img_rgb}
+images = {"origin": img, "img_gray": img_gray, "img_hsv": img_hsv, "img_rgb": img_rgb}
 
 # 生の画像データ取得
 w, h, c = img.shape
@@ -55,9 +55,9 @@ print(img[100, 100])
 output_dir = "./images/outputs"
 os.makedirs(output_dir, exist_ok=True)
 
-for name, img in imgs.items():
+for name, image in images.items():
     cv2.putText(
-        img,
+        image,
         name,
         (w // 3 * 1, h // 7 * 6),
         cv2.FONT_HERSHEY_SIMPLEX,
@@ -66,8 +66,8 @@ for name, img in imgs.items():
         2,
         cv2.LINE_AA,
     )
-    cv2.imshow("", img)
+    cv2.imshow("", image)
 
     cv2.waitKey()
     cv2.destroyAllWindows()
-    cv2.imwrite(f"{output_dir}/output_{name}.png", img)
+    cv2.imwrite(f"{output_dir}/output_{name}_icon.png", image)

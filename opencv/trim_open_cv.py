@@ -19,7 +19,7 @@ resize_image = cv2.resize(img, dsize)
 resize_h, resize_w, resize_c = resize_image.shape
 print(f"resize_image[h: {resize_h}, w: {resize_w}, c: {resize_c}]")
 
-imgs = {
+images = {
     "origin": img,
     "trim": trim_img,
     "resize": resize_image,
@@ -28,9 +28,9 @@ imgs = {
 output_dir = "./images/outputs"
 os.makedirs(output_dir, exist_ok=True)
 
-for name, img in imgs.items():
+for name, image in images.items():
     cv2.putText(
-        img,
+        image,
         name,
         (w // 3 * 1, h // 7 * 6),
         cv2.FONT_HERSHEY_SIMPLEX,
@@ -39,11 +39,9 @@ for name, img in imgs.items():
         2,
         cv2.LINE_AA,
     )
-    cv2.imshow("", img)
-
-    cv2.imshow("", trim_img)
+    cv2.imshow("", image)
 
     cv2.waitKey()
     cv2.destroyAllWindows()
 
-    cv2.imwrite(f"{output_dir}/output_{name}_icon.png", img)
+    cv2.imwrite(f"{output_dir}/output_{name}_icon.png", image)

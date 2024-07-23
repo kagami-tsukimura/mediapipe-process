@@ -14,6 +14,7 @@ while True:
     if not ret:
         break
 
+    # captureしたframeは、画像のため画像処理可能
     resize_frame = cv2.resize(frame, dsize=None, fx=0.5, fy=0.5)
 
     cv2.imshow("frame", resize_frame)

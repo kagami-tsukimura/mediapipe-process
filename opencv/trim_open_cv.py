@@ -33,6 +33,7 @@ output_dir = "./images/outputs"
 os.makedirs(output_dir, exist_ok=True)
 
 for name, image in images.items():
+    h, w, _ = image.shape
     cv2.putText(
         image,
         name,

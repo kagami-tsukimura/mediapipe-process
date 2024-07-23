@@ -1,3 +1,5 @@
+import os
+
 import cv2
 import numpy as np
 
@@ -23,18 +25,41 @@ def call_noise(height, width):
 img = cv2.imread("./images/icon.png")
 
 height, width, _ = img.shape
-noise = img.copy()
+noise_img = img.copy()
 
 white = (255, 255, 255)
 black = (0, 0, 0)
 
 # ごま塩ノイズ
 nx, ny = call_noise(height, width)
-noise[ny, nx] = white
+noise_img[ny, nx] = white
 nx, ny = call_noise(height, width)
-noise[ny, nx] = black
+noise_img[ny, nx] = black
+
+# 平坦化
+# 平均化フィルタ
+flatten_img = cv2.blur(noise_img, (5, 5))
+
+images = {"noise": noise_img, "flatten": flatten_img}
 
 
-cv2.imshow("", noise)
-cv2.waitKey()
-cv2.destroyAllWindows()
+output_dir = "./images/outputs"
+os.makedirs(output_dir, exist_ok=True)
+
+for name, image in images.items():
+    h, w, _ = image.shape
+    cv2.putText(
+        image,
+        name,
+        (w // 3 * 1, h // 7 * 6),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        1,
+        (255, 0, 0),
+        2,
+        cv2.LINE_AA,
+    )
+    cv2.imshow("", image)
+
+    cv2.waitKey()
+    cv2.destroyAllWindows()
+    cv2.imwrite(f"{output_dir}/output_{name}_icon.png", image)

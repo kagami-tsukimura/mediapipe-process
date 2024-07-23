@@ -19,10 +19,14 @@ resize_image = cv2.resize(img, dsize)
 resize_h, resize_w, resize_c = resize_image.shape
 print(f"resize_image[h: {resize_h}, w: {resize_w}, c: {resize_c}]")
 
+# resize（倍率）
+magni_resize_image = cv2.resize(img, dsize=None, fx=0.5, fy=0.5)
+
 images = {
     "origin": img,
     "trim": trim_img,
     "resize": resize_image,
+    "magni_resize": magni_resize_image,
 }
 
 output_dir = "./images/outputs"

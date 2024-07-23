@@ -16,14 +16,14 @@ angle = 45
 scale = 1
 # 回転 & Affine変換
 trans = cv2.getRotationMatrix2D(center, angle, scale)
-free_img = cv2.warpAffine(img, trans, (width, height))
+affine_img = cv2.warpAffine(img, trans, (width, height))
 
 imgs = {
     "origin": img,
     "clock": clock_img,
     "counter": counter_img,
     "reverse": reverse_img,
-    "free": free_img,
+    "affine": affine_img,
 }
 
 for name, image in imgs.items():

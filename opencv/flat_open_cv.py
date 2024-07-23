@@ -40,7 +40,7 @@ noise_img[ny, nx] = black
 # 平均化フィルタ
 flatten_img = cv2.blur(noise_img, (5, 5))
 
-images = {"noise": noise_img, "flatten": flatten_img}
+images = {"origin": img, "noise": noise_img, "flatten": flatten_img}
 
 
 output_dir = "./images/outputs"
@@ -63,3 +63,11 @@ for name, image in images.items():
     cv2.waitKey()
     cv2.destroyAllWindows()
     cv2.imwrite(f"{output_dir}/output_{name}_icon.png", image)
+
+
+imgs = cv2.hconcat(list(images.values()))
+cv2.imshow("", imgs)
+
+cv2.waitKey()
+cv2.destroyAllWindows()
+cv2.imwrite(f"{output_dir}/output_all_icon.png", imgs)

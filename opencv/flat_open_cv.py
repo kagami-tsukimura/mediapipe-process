@@ -3,6 +3,17 @@ import numpy as np
 
 
 def call_noise(height, width):
+    """
+    Generates random noise coordinates based on the given height and width.
+
+    Parameters:
+    height (int): The height of the image.
+    width (int): The width of the image.
+
+    Returns:
+    tuple: Two arrays containing random noise coordinates.
+    """
+
     nx = np.random.randint(0, width - 1, 1500)
     ny = np.random.randint(0, height - 1, 1500)
 

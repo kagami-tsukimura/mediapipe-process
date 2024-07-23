@@ -14,7 +14,12 @@ while True:
     if not ret:
         break
 
-    cv2.imshow("frame", frame)
+    resize_frame = cv2.resize(frame, dsize=None, fx=0.5, fy=0.5)
+
+    cv2.imshow("frame", resize_frame)
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
+
+cap.release()
+cv2.destroyAllWindows()
